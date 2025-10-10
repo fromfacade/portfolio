@@ -1,0 +1,57 @@
+
+            body {
+              background-color: #3c3c3c;
+            }
+      
+            .luis {
+              width: 300px;
+              padding-top: 50px;
+              padding-bottom: 50px;
+              border-radius: 10px;
+            }
+      
+            .body-text {
+              color: white;
+              transition: font-size 2s;
+              text-align: center;
+              font: 100;
+              font-size: 70px;
+              border-radius: 10px;
+              margin-right: 200px;
+              margin-left: 200px;
+      
+            }
+      
+            .body-text:hover {
+              font-size: 80px;
+              margin-right: 90px;
+              margin-left: 90px;
+      
+            }
+
+            .heading {
+              color: white;
+              text-align: center;
+              font: 100;
+              font-size: 120px;
+              border-radius: 10px;
+              margin-right: 200px;
+              margin-left: 200px;
+              margin-top: 20px;
+              margin-bottom: 20px;
+            }
+      
+            .titles {
+              border: none;
+            }
+      
+            .bird {
+              width: auto;
+              transition: width 5s;
+              color: white;
+              text-align: center;
+            }
+      
+            .bird:hover {
+              width: 500px;
+            }
