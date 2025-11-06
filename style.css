@@ -17,14 +17,17 @@ body {
 
 }
 
-.dream-job {
-  font-size: 25px;
-  font: 50;
-  background-color: rgba(255, 255, 255, 0.507);
-  color: black;
-  text-align: center;
-  margin-top: 0px;
-  margin-bottom: 2px;
+.job-title {
+  display: block;
+  width: max-content;
+  margin: 8px auto;
+  position: relative;
+  padding: 6px 16px;
+  font-size: 25px;                 
+  line-height: 1.2;
+  background-color: rgba(216, 216, 216, 0.507);
+  border: 1px solid rgba(0,0,0,.35);
+  border-radius: 999999999999999999999999px;  
 
 }
 
@@ -51,6 +54,17 @@ body {
   margin-left: 200px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.luis-heading {
+  display: block;
+  margin: 8px auto;
+  position: relative;
+  padding: 6px 16px;
+  font-size: 25px;                 
+  line-height: 1.2;
+  border: 1px solid rgba(0,0,0,.35);
+  border-radius: 9999px;  
 }
 
 .heading {
