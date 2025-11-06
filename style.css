@@ -6,9 +6,10 @@ body {
 .luis {
   width: 300px;
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 10px;
   border-radius: 100px;
   transition: width, 1s;
+  margin-bottom: 10px;
 }
 
 .luis:hover {
@@ -16,7 +17,18 @@ body {
 
 }
 
-.job {
+.dream-job {
+  font-size: 25px;
+  font: 50;
+  background-color: rgba(255, 255, 255, 0.507);
+  color: black;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 2px;
+
+}
+
+.experience {
   font-size: 25px;
   font: 50;
   background-color: rgba(255, 255, 255, 0.507);
@@ -37,6 +49,8 @@ body {
   border-radius: 10px;
   margin-right: 200px;
   margin-left: 200px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .heading {
@@ -48,7 +62,8 @@ body {
   margin-right: 200px;
   margin-left: 200px;
   margin-top: 10px;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
+  padding-bottom: 10px;
 }
       
 .titles {
