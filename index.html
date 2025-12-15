@@ -1,68 +1,153 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-
-    <title>facade</title>
-
-    <link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Luis Castellanos | Portfolio</title>
+    <meta
+      name="description"
+      content="Luis Castellanos — CSE student at UC Santa Cruz. Projects, experience, and contact."
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="brand" href="#top">fromfacade</a>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
 
-    <div class="job-title">
-      <span style="font-size:10px;">upcoming</span> <span style="color:rgb(255, 217, 0)">Full-Stack Software Engineer</span>
-    </div>
+    <main id="top" class="container">
+      <section class="hero">
+        <img
+          class="avatar"
+          src="IMG_3886.webp"
+          alt="Photo of Luis Castellanos"
+          width="320"
+          height="320"
+          loading="eager"
+        />
 
-    <div class="luis-title">
-       <span style="color:rgb(255, 217, 0)">Luis Castellanos</span>
-    </h1>
+        <div class="hero-copy">
+          <p class="pill">Upcoming Full-Stack Software Engineer</p>
+          <h1>Luis Castellanos</h1>
+          <p class="lead">
+            Computer Science & Engineering student at UC Santa Cruz. I like building practical
+            apps, learning fast, and shipping projects that are clean and usable.
+          </p>
 
-    <center>
-      <img src="IMG_3886.webp" class="luis">
-    </center>
+          <div class="cta">
+            <a class="btn primary" href="https://github.com/fromfacade" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="#contact">Contact</a>
+            <a class="btn" href="Luis _Castellanos_Resume2025.pdf" target="_blank" rel="noreferrer">Resume</a>
+          </div>
+        </div>
+      </section>
 
-    <hr>
+      <section id="projects" class="section">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <p class="muted">A few things I’ve built / I’m building.</p>
+        </div>
 
-    <h1 class="heading">
-      PROJECTS
-    </h1>
+        <div class="grid">
+          <article class="card">
+            <h3>Spritz — Cologne Dupe Finder</h3>
+            <p>
+              Web app that helps users find fragrance “dupes” with a simple browsing/search flow.
+            </p>
+            <ul class="tags">
+              <li>Web</li><li>JS</li><li>UI</li>
+            </ul>
+            <div class="card-links">
+              <a href="https://github.com/fromfacade/Spritz-Cologne-Dupe" target="_blank" rel="noreferrer">Repo</a>
+              <!-- <a href="https://your-live-demo.com" target="_blank" rel="noreferrer">Live</a> -->
+            </div>
+          </article>
 
-    <p class="body-text">
-      <span style="color:rgb(255, 217, 0); font-size: 30px; margin-left: 50px; margin-right: 50px;">pending relevent projects haha</span>
-    </p>
+          <article class="card">
+            <h3>Computer Building Website (in progress)</h3>
+            <p>
+              Build planner for selecting compatible PC parts, saving builds, and comparing prices.
+            </p>
+            <ul class="tags">
+              <li>Next.js</li><li>PostgreSQL</li><li>APIs</li>
+            </ul>
+            <div class="card-links">
+              <a href="#" aria-disabled="true">Coming soon</a>
+            </div>
+          </article>
 
-    <p class="body-text">
-      I am working on a <span style="color:rgb(255, 217, 0)">Computer Building Website</span>, but it's only on paper right now. Nothing really being made, since I'm taking like 4 classes, which is kind of taking over my time right now.
-    </p>
-    
-    <hr>
-    
-    <h4 class="heading">
-      <span style="color:rgb(253, 215, 0)">ABOUT ME</span>
-    </h4>
-    
-    <p class="body-text">
-      Hi, I’m <span style="color: rgb(255, 217, 0);">Luis—a Computer Science & Engineering student at UC Santa Cruz.</span> 
-    </p>
+          <!-- Add 1–2 more cards -->
+        </div>
+      </section>
 
-    <hr>
+      <section id="about" class="section">
+        <div class="section-head">
+          <h2>About</h2>
+        </div>
+        <div class="card">
+          <p>
+            Hi, I’m Luis—a Computer Science & Engineering student at UC Santa Cruz.
+            I’m focused on becoming a strong software engineer through projects, coursework,
+            and internships.
+          </p>
+        </div>
+      </section>
 
-    <h1 class="heading">
-      EXPERIENCE
-    </h1>
+      <section id="experience" class="section">
+        <div class="section-head">
+          <h2>Experience</h2>
+        </div>
 
-    <h1 class="body-text">
-      <span style="font-size: 60px;"> LSS Tutoring Services </span>
-    </h1>
+        <article class="card">
+          <h3>LSS Tutoring Services</h3>
+          <p class="muted">Student Office Assistant (SOA)</p>
+          <ul class="bullets">
+            <li>Managed day-to-day tutor schedules and room bookings, updating changes and making sure every session had coverage.</li>
+            <li>Tracked scheduling and attendance issues with staff and suggested small changes (like shifting hours or adding sessions) to better match student demand.</li>
+            <li>Used online calendars and spreadsheets to update tutor schedules, handle last-minute changes, and flag double bookings or gaps.</li>
+          </ul>
+        </article>
 
-    <h1 class="body-text">
-      <span style="font-size: 35px;">Position: <span style="color:rgb(253, 215, 0)">SOA (Student Office Assistant) </span></span>
-    </h1>
-    
-    <center>
-    <img src="bird-birds.gif" class="bird">
-    </center>
+        <article class="card">
+          <h3>Oakes HSG & Student Life - Santa Cruz</h3>
+          <p class="muted">Oakes Tech Crew Member</p>
+          <ul class="bullets">
+            <li>Configured and operated complex A/V systems — including microphones, amplifiers, DJ lighting, fog machines, and soundboards — for events with 150+ attendees, ensuring seamless technical execution.</li>
+            <li>Collaborated with organizers to translate event requirements into efficient technical setups, optimizing layouts for performance and user experience.</li>
+            <li>Troubleshooting and resolving hardware/software failures under strict time constraints, applying systematic problem-solving methods.</li>
+            <li>Contributed to team process improvements by sharing technical insights and documenting best practices during weekly syncs.</li>
+          </ul>
+        </article>
+      </section>
 
+      <section id="contact" class="section">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p class="muted">Best way to reach me:</p>
+        </div>
+
+        <div class="card contact">
+          <a class="btn primary" href="mailto:luiscast5093@gmail.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/luis-castellanos-6987b2244/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p class="muted">© <span id="year"></span> Luis Castellanos</p>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
