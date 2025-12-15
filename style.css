@@ -155,6 +155,12 @@ h1 {
   color: var(--text);
 }
 
+.stack {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+}
+
 .bullets {
   margin: 10px 0 0;
   color: var(--muted);
