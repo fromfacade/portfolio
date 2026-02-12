@@ -1,0 +1,176 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Luis Castellanos | Portfolio</title>
+    <meta
+      name="description"
+      content="Luis Castellanos — CSE student at UC Santa Cruz. Projects, experience, and contact."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Vercel Web Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="brand" href="#top">fromfacade</a>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top" class="container">
+      <section class="hero">
+        <img
+          class="avatar"
+          src="IMG_3886.webp"
+          alt="Photo of Luis Castellanos"
+          width="320"
+          height="320"
+          loading="eager"
+        />
+
+        <div class="hero-copy">
+          <p class="pill">Upcoming Full-Stack Software Engineer</p>
+          <h1>Luis Castellanos</h1>
+          <p class="lead">
+            Computer Science & Engineering student at UC Santa Cruz. I like building practical
+            apps, learning fast, and shipping projects that are clean and usable.
+          </p>
+
+          <div class="cta">
+            <a class="btn primary" href="https://github.com/fromfacade" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="#contact">Contact</a>
+            <a class="btn" href="Luis_Castellanos_Resume2026.pdf" target="_blank" rel="noreferrer">Resume</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <p class="muted">A few things I’ve built / I’m building.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <h3>Spritz — Cologne Dupe Finder</h3>
+            <p>
+              Web app that helps users find fragrance “dupes” with a simple browsing/search flow.
+            </p>
+            <ul class="tags">
+              <li>Next.js</li><li>PostgreSQL</li><li>APIs</li><li>Web</li><li>JS</li><li>UI</li>
+            </ul>
+            <div class="card-links">
+              <a href="https://github.com/fromfacade/Spritz-Cologne-Dupe" target="_blank" rel="noreferrer">Repo</a>
+              <!-- <a href="https://your-live-demo.com" target="_blank" rel="noreferrer">Live</a> -->
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Computer Building Website</h3>
+            <p>
+              Build planner for selecting compatible PC parts, saving builds, and comparing prices.
+            </p>
+            <ul class="tags">
+              <li>Web</li><li>JS</li><li>UI</li><li>React</li>
+            </ul>
+            <div class="card-links">
+              <a href="https://github.com/fromfacade/PC-Build-Web-App" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <!-- Add 1–2 more cards -->
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="section-head">
+          <h2>About</h2>
+        </div>
+        <div class="card">
+          <p>
+            Hey, I’m Luis. <br> I'm a Computer Science & Engineering student at UC Santa Cruz.
+            I’m focused on becoming a strong software engineer through projects, coursework,
+            and internships.
+          </p>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="section-head">
+          <h2>Experience</h2>
+        </div>
+
+        <div class="stack">
+        <article class="card">
+          <h3>LSS Tutoring Services</h3>
+          <p class="muted">Student Office Assistant (SOA)</p>
+          <ul class="bullets">
+            <li>Managed day-to-day tutor schedules and room bookings, updating changes and making sure every session had coverage.</li>
+            <li>Tracked scheduling and attendance issues with staff and suggested small changes (like shifting hours or adding sessions) to better match student demand.</li>
+            <li>Used online calendars and spreadsheets to update tutor schedules, handle last-minute changes, and flag double bookings or gaps.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Oakes HSG & Student Life - Santa Cruz</h3>
+          <p class="muted">Oakes Tech Crew Member</p>
+          <ul class="bullets">
+            <li>Configured and operated complex A/V systems — including microphones, amplifiers, DJ lighting, fog machines, and soundboards — for events with 150+ attendees, ensuring seamless technical execution.</li>
+            <li>Collaborated with organizers to translate event requirements into efficient technical setups, optimizing layouts for performance and user experience.</li>
+            <li>Troubleshooting and resolving hardware/software failures under strict time constraints, applying systematic problem-solving methods.</li>
+            <li>Contributed to team process improvements by sharing technical insights and documenting best practices during weekly syncs.</li>
+          </ul>
+        </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p class="muted">Best way to reach me:</p>
+        </div>
+
+        <div class="card contact">
+          <a class="btn primary" href="mailto:luiscast5093@gmail.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/luis-castellanos-6987b2244/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p class="muted">© <span id="year"></span> Luis Castellanos</p>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <div id="snow-root"></div>
+
+    <script type="module">
+      import React from "https://esm.sh/react@18.3.1";
+      import { createRoot } from "https://esm.sh/react-dom@18.3.1/client";
+      import Snowfall from "https://esm.sh/react-snowfall@2.4.0?deps=react@18.3.1,react-dom@18.3.1";
+
+      const root = createRoot(document.getElementById("snow-root"));
+
+      root.render(
+        React.createElement(Snowfall, {
+          snowflakeCount: 150,
+          // Force full-screen coverage (recommended approach for full-page snow)
+          style: { position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh" },
+        })
+      );
+    </script>
+  </body>
+</html>
