@@ -27,19 +27,22 @@ export default function FloatingTerminal() {
     );
 
     const isHome = pathname === "/";
+    const isBoot = pathname === "/boot";
+    const shouldHide = isHome || isBoot;
+
     const toggleOpen = () => setIsOpen(!isOpen);
     const toggleMaximize = () => setIsMaximized(!isMaximized);
 
     // Focus input when opened
     useEffect(() => {
-        if (isOpen && !isHome && inputRef.current) {
+        if (isOpen && !shouldHide && inputRef.current) {
             setTimeout(() => inputRef.current?.focus(), 100);
         }
-    }, [isOpen, isHome, inputRef]);
+    }, [isOpen, shouldHide, inputRef]);
 
-    // Visibility Logic: Hide completely on Home path
+    // Visibility Logic: Hide completely on Home and Boot path
     return (
-        <div className={isHome ? "hidden" : "block"}>
+        <div className={shouldHide ? "hidden" : "block"}>
             {!isOpen ? (
                 // Minimized State (Pill)
                 <button

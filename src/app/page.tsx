@@ -1,8 +1,29 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import TerminalNavigator from "@/components/TerminalNavigator";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
+  const router = useRouter();
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    // Check if boot has been seen in this session
+    const bootSeen = sessionStorage.getItem("bootSeen");
+    if (!bootSeen) {
+      router.replace("/boot");
+    } else {
+      setIsReady(true);
+    }
+  }, [router]);
+
+  if (!isReady) {
+    return <div className="min-h-screen bg-[#121212]" />; // Blank loading state to prevent flash
+  }
+
   return (
     <div className="container-custom flex flex-col items-center justify-center min-h-[calc(100vh-10rem)] gap-10">
       <div className="text-center space-y-4 max-w-2xl animate-fade-in-up">
