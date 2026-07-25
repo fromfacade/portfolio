@@ -1,5 +1,7 @@
 # Luis Castellanos — Portfolio
+
 luis-castellanos.com
+
 This is my personal portfolio built with Next.js, TypeScript, and Tailwind CSS.  
 It showcases my software engineering projects, experience, and technical growth as a CSE Student.
 
