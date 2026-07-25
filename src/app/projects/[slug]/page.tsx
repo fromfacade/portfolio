@@ -28,7 +28,15 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <div className="lg:col-span-2 space-y-8">
                     <div>
-                        <h1 className="text-4xl md:text-5xl font-bold mb-4">{project.title}</h1>
+                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                            <h1 className="text-4xl md:text-5xl font-bold">{project.title}</h1>
+                            {project.status && (
+                                <span className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-[#f8c946]/10 text-[#f8c946] border border-[#f8c946]/20">
+                                    <span className="h-1.5 w-1.5 rounded-full bg-[#f8c946]" aria-hidden="true" />
+                                    {project.status}
+                                </span>
+                            )}
+                        </div>
                         <p className="text-xl text-white/70 leading-relaxed">
                             {project.description}
                         </p>

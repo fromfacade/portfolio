@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 // ASCII Art Banner
@@ -44,7 +44,6 @@ export default function BootPage() {
 
   // Banner scaling state
   const [scale, setScale] = useState(1);
-  const containerRef = useRef<HTMLDivElement>(null);
   const bannerWrapperRef = useRef<HTMLDivElement>(null);
   const preRef = useRef<HTMLPreElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -87,6 +86,11 @@ export default function BootPage() {
     return () => resizeObserver.disconnect();
   }, []);
 
+  const finishBoot = useCallback(() => {
+    sessionStorage.setItem("bootSeen", "true");
+    router.push("/");
+  }, [router]);
+
   // Boot Animation
   useEffect(() => {
     // Check if reduced motion is preferred
@@ -113,12 +117,7 @@ export default function BootPage() {
     }, delay);
 
     return () => clearTimeout(timeout);
-  }, [currentLineIndex]);
-
-  const finishBoot = () => {
-    sessionStorage.setItem("bootSeen", "true");
-    router.push("/");
-  };
+  }, [currentLineIndex, finishBoot]);
 
   // Skip handling (Enter key)
   useEffect(() => {
@@ -127,7 +126,7 @@ export default function BootPage() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [finishBoot]);
 
   return (
     <div className="fixed inset-0 bg-[#121212] flex items-center justify-center p-4 font-mono text-sm sm:text-base cursor-default select-none">

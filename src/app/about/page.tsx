@@ -35,7 +35,7 @@ export default function AboutPage() {
             software that balances performance, aesthetics, and usability.
           </p>
           <p className="text-lg text-white/50 leading-relaxed max-w-2xl">
-            When I'm not coding, I'm usually optimizing my desk setup, exploring
+            When I&apos;m not coding, I&apos;m usually optimizing my desk setup, exploring
             new tech, or trying to find the perfect mechanical keyboard switch.
           </p>
         </div>
@@ -89,18 +89,18 @@ export default function AboutPage() {
       >
         <div className="flex items-center gap-4 text-[#f8c946]">
           <Code2 size={24} />
-          <h2 className="text-2xl font-bold">The "Why"</h2>
+          <h2 className="text-2xl font-bold">The &quot;Why&quot;</h2>
         </div>
         <div className="prose prose-invert max-w-none text-white/70 text-lg leading-relaxed space-y-4">
           <p>
-            My journey into tech wasn't just about learning syntax; it was about
+            My journey into tech wasn&apos;t just about learning syntax; it was about
             the power to create. I started with simple scripts and quickly grew
             obsessed with how software can solve real-world problems.
           </p>
           <p>
-            Whether it's optimizing a backend query or perfecting a UI
+            Whether it&apos;s optimizing a backend query or perfecting a UI
             transition, I treat every line of code as an opportunity to improve
-            the user experience. I'm currently looking for roles where I can
+            the user experience. I&apos;m currently looking for roles where I can
             contribute to impactful projects and continue growing as an
             engineer.
           </p>
