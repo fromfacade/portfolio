@@ -129,8 +129,8 @@ export default function BootPage() {
   }, [finishBoot]);
 
   return (
-    <div className="fixed inset-0 bg-[#121212] flex items-center justify-center p-4 font-mono text-sm sm:text-base cursor-default select-none">
-      <div className="w-full max-w-5xl h-[80vh] flex flex-col bg-[#1e1e1e] border border-white/10 rounded-lg shadow-2xl overflow-hidden relative">
+    <div className="fixed inset-0 z-[60] bg-[#121212] flex items-center justify-center p-3 sm:p-4 font-mono text-sm sm:text-base cursor-default select-none">
+      <div className="w-full max-w-5xl h-[85dvh] sm:h-[80dvh] flex flex-col bg-[#1e1e1e] border border-white/10 rounded-lg shadow-2xl overflow-hidden relative">
         {/* Header */}
         <div className="bg-[#2d2d2d] px-4 py-2 flex items-center justify-between border-b border-white/10 shrink-0">
           <div className="flex gap-2">
@@ -177,27 +177,28 @@ export default function BootPage() {
 
           {/* Lines */}
           {lines.map((line, i) => (
-            <div key={i} className="flex gap-3 animate-fade-in">
+            <div key={i} className="flex gap-3 animate-fade-in motion-reduce:animate-none">
               <span className="text-[#f8c946] shrink-0">{`>`}</span>
-              <span>{line}</span>
+              <span className="min-w-0 break-words">{line}</span>
             </div>
           ))}
 
           {/* Cursor / Loading */}
           {!isComplete && (
             <div className="flex gap-3">
-              <span className="text-[#f8c946] shrink-0 animate-pulse">{`>`}</span>
-              <span className="animate-pulse">_</span>
+              <span className="text-[#f8c946] shrink-0 animate-pulse motion-reduce:animate-none">{`>`}</span>
+              <span className="animate-pulse motion-reduce:animate-none">_</span>
             </div>
           )}
         </div>
 
         {/* Skip Button */}
         <button
+          type="button"
           onClick={finishBoot}
-          className="absolute bottom-6 right-6 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded text-xs text-white/50 hover:text-white transition-all uppercase tracking-wider"
+          className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 min-h-11 px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded text-xs text-white/50 hover:text-white transition-all uppercase tracking-wider focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
         >
-          Skip [Enter]
+          Skip<span className="hidden sm:inline"> [Enter]</span>
         </button>
       </div>
     </div>

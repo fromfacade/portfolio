@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { ArrowRight } from "lucide-react";
 
 interface ArchitectureDiagramProps {
@@ -26,14 +27,15 @@ export default function ArchitectureDiagram({
         </div>
       )}
       <div
-        className="flex flex-wrap items-center gap-2"
+        className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2"
         role="list"
         aria-label={`${label ?? "Architecture"} flow diagram${isPlanned ? " (planned, not yet built)" : ""}`}
       >
         {steps.map((step, index) => (
-          <div key={step} className="flex items-center gap-2" role="listitem">
+          <Fragment key={step}>
             <div
-              className={`px-3 py-2 rounded-lg text-xs sm:text-sm text-center ${
+              role="listitem"
+              className={`px-3 py-2 rounded-lg text-xs sm:text-sm text-center break-words ${
                 isPlanned
                   ? "border border-dashed border-white/20 text-white/50 bg-white/[0.02]"
                   : "border border-white/10 bg-white/5 text-white/80"
@@ -42,9 +44,13 @@ export default function ArchitectureDiagram({
               {step}
             </div>
             {index < steps.length - 1 && (
-              <ArrowRight size={16} className="text-white/30 shrink-0" aria-hidden="true" />
+              <ArrowRight
+                size={16}
+                className="text-white/30 shrink-0 self-center rotate-90 sm:rotate-0"
+                aria-hidden="true"
+              />
             )}
-          </div>
+          </Fragment>
         ))}
       </div>
     </div>

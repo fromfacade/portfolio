@@ -139,7 +139,7 @@ export default function SpritzDemo() {
               setLuxuryPick("");
               setHasSearched(false);
             }}
-            className="w-full rounded-lg border border-white/10 bg-[#1e1e1e] px-3 py-2 text-sm text-white focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
+            className="w-full rounded-lg border border-white/10 bg-[#1e1e1e] px-3 py-2.5 text-base sm:text-sm text-white focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
           >
             {SCENT_FAMILIES.map((option) => (
               <option key={option} value={option}>
@@ -157,7 +157,7 @@ export default function SpritzDemo() {
             id={budgetFieldId}
             value={budget}
             onChange={(event) => setBudget(event.target.value as BudgetRange)}
-            className="w-full rounded-lg border border-white/10 bg-[#1e1e1e] px-3 py-2 text-sm text-white focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
+            className="w-full rounded-lg border border-white/10 bg-[#1e1e1e] px-3 py-2.5 text-base sm:text-sm text-white focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
           >
             {BUDGET_RANGES.map((option) => (
               <option key={option} value={option}>
@@ -175,7 +175,7 @@ export default function SpritzDemo() {
             id={luxuryFieldId}
             value={luxuryPick}
             onChange={(event) => setLuxuryPick(event.target.value)}
-            className="w-full rounded-lg border border-white/10 bg-[#1e1e1e] px-3 py-2 text-sm text-white focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
+            className="w-full rounded-lg border border-white/10 bg-[#1e1e1e] px-3 py-2.5 text-base sm:text-sm text-white focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
           >
             <option value="">None selected</option>
             {LUXURY_SAMPLES[family].map((option) => (
@@ -190,7 +190,7 @@ export default function SpritzDemo() {
       <button
         type="button"
         onClick={() => setHasSearched(true)}
-        className="inline-flex items-center gap-2 rounded-lg bg-[#f8c946] px-4 py-2.5 text-sm font-medium text-black transition-colors hover:bg-[#f8c946]/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#f8c946] px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-[#f8c946]/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white w-full sm:w-auto"
       >
         Find Alternatives
       </button>

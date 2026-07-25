@@ -4,8 +4,8 @@ import { useEffect, useId, useRef, useState } from "react";
 
 type TabKey = "planner" | "habits" | "focus" | "notes" | "progress";
 
-const TABS: { key: TabKey; label: string }[] = [
-  { key: "planner", label: "Daily Planner" },
+const TABS: { key: TabKey; label: string; shortLabel?: string }[] = [
+  { key: "planner", label: "Daily Planner", shortLabel: "Planner" },
   { key: "habits", label: "Habits" },
   { key: "focus", label: "Focus" },
   { key: "notes", label: "Notes" },
@@ -74,13 +74,20 @@ export default function ProductivityDemo() {
               aria-selected={selected}
               aria-controls={`${tabListId}-${tab.key}-panel`}
               onClick={() => setActiveTab(tab.key)}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946] ${
+              className={`rounded-full px-3 py-2 min-h-11 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946] ${
                 selected
                   ? "bg-[#f8c946]/10 text-[#f8c946] border border-[#f8c946]/30"
                   : "text-white/60 border border-white/10 hover:text-white hover:bg-white/5"
               }`}
             >
-              {tab.label}
+              {tab.shortLabel ? (
+                <>
+                  <span className="sm:hidden">{tab.shortLabel}</span>
+                  <span className="hidden sm:inline">{tab.label}</span>
+                </>
+              ) : (
+                tab.label
+              )}
             </button>
           );
         })}
@@ -173,7 +180,7 @@ function HabitsPanel() {
                 ),
               )
             }
-            className={`shrink-0 rounded-full px-3 py-1 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946] ${
+            className={`shrink-0 rounded-full px-3 py-2 min-h-9 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946] ${
               habit.doneToday
                 ? "bg-[#f8c946]/10 text-[#f8c946] border border-[#f8c946]/30"
                 : "text-white/60 border border-white/10 hover:text-white"
@@ -231,7 +238,7 @@ function FocusPanel() {
               setIsRunning(false);
             }}
             aria-pressed={selectedMinutes === preset}
-            className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946] ${
+            className={`rounded-lg px-4 py-2.5 min-h-11 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946] ${
               selectedMinutes === preset
                 ? "bg-[#f8c946]/10 text-[#f8c946] border border-[#f8c946]/30"
                 : "text-white/60 border border-white/10 hover:text-white hover:bg-white/5"
@@ -255,7 +262,7 @@ function FocusPanel() {
               type="button"
               onClick={() => setIsRunning((prev) => !prev)}
               disabled={secondsLeft === 0}
-              className="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
+              className="rounded-lg border border-white/10 px-3 py-2 min-h-11 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
             >
               {isRunning ? "Pause" : "Start"}
             </button>
@@ -265,7 +272,7 @@ function FocusPanel() {
                 setSecondsLeft(selectedMinutes * 60);
                 setIsRunning(false);
               }}
-              className="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
+              className="rounded-lg border border-white/10 px-3 py-2 min-h-11 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
             >
               Reset
             </button>
@@ -293,7 +300,7 @@ function NotesPanel() {
         onChange={(event) => setNotes(event.target.value)}
         placeholder="Jot something down — this resets when the page reloads."
         rows={5}
-        className="w-full resize-none rounded-lg border border-white/10 bg-[#1e1e1e] px-3 py-2 text-sm text-white/80 placeholder-white/30 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
+        className="w-full resize-none rounded-lg border border-white/10 bg-[#1e1e1e] px-3 py-2.5 text-base sm:text-sm text-white/80 placeholder-white/30 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
       />
     </div>
   );
@@ -303,7 +310,7 @@ function ProgressPanel() {
   return (
     <div className="space-y-3">
       <p className="text-xs text-white/40">Demonstration data — not tied to a real account.</p>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
         <StatCard label="Rank" value="Gold II" />
         <StatCard label="Current streak" value="9 days" />
         <StatCard label="Tasks this week" value="27" />

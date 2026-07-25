@@ -49,27 +49,26 @@ export default function TerminalNavigator() {
           <div key={i} className="break-words">
             {entry.command !== "init" && (
               <div className="flex gap-2 text-white/50">
-                <span className="text-green-500">➜</span>
-                <span className="text-cyan-400">~</span>
-                <span>{entry.command}</span>
+                <span className="shrink-0 text-green-500">➜</span>
+                <span className="shrink-0 text-cyan-400">~</span>
+                <span className="min-w-0 break-words">{entry.command}</span>
               </div>
             )}
-            <div className="ml-5 mt-1">{entry.output}</div>
+            <div className="ml-5 mt-1 min-w-0 break-words">{entry.output}</div>
           </div>
         ))}
 
         <form onSubmit={handleSubmit} className="flex gap-2 items-center">
-          <span className="text-green-500">➜</span>
-          <span className="text-cyan-400">~</span>
+          <span className="shrink-0 text-green-500">➜</span>
+          <span className="shrink-0 text-cyan-400">~</span>
           <input
             ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="bg-transparent border-none outline-none flex-1 text-white/90 placeholder-white/20"
+            className="bg-transparent border-none outline-none flex-1 text-white/90 placeholder-white/20 text-base"
             placeholder="Type 'help'..."
-            autoFocus
             autoComplete="off"
             spellCheck={false}
           />

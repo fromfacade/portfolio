@@ -33,9 +33,14 @@ export default function FloatingTerminal() {
     const toggleOpen = () => setIsOpen(!isOpen);
     const toggleMaximize = () => setIsMaximized(!isMaximized);
 
-    // Focus input when opened
+    // Focus input when opened, but skip on touch devices so opening the
+    // terminal doesn't immediately pop up the on-screen keyboard.
     useEffect(() => {
-        if (isOpen && !shouldHide && inputRef.current) {
+        const isCoarsePointer =
+            typeof window !== "undefined" &&
+            window.matchMedia("(pointer: coarse)").matches;
+
+        if (isOpen && !shouldHide && !isCoarsePointer && inputRef.current) {
             setTimeout(() => inputRef.current?.focus(), 100);
         }
     }, [isOpen, shouldHide, inputRef]);
@@ -46,8 +51,10 @@ export default function FloatingTerminal() {
             {!isOpen ? (
                 // Minimized State (Pill)
                 <button
+                    type="button"
                     onClick={toggleOpen}
-                    className="fixed bottom-4 right-4 z-50 flex items-center gap-2 px-4 py-3 bg-[#1e1e1e] border border-white/10 rounded-full shadow-2xl hover:bg-[#2d2d2d] transition-all group animate-fade-in-up"
+                    style={{ bottom: "calc(1rem + env(safe-area-inset-bottom))" }}
+                    className="fixed right-4 z-50 flex items-center gap-2 px-4 py-3 bg-[#1e1e1e] border border-white/10 rounded-full shadow-2xl hover:bg-[#2d2d2d] transition-all group animate-fade-in-up motion-reduce:animate-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
                     aria-label="Open Terminal"
                 >
                     <Terminal size={18} className="text-[#f8c946] group-hover:scale-110 transition-transform" />
@@ -56,10 +63,18 @@ export default function FloatingTerminal() {
             ) : (
                 // Expanded State (Window)
                 <div
-                    className={`fixed z-50 bg-[#1e1e1e]/95 backdrop-blur-md border border-white/10 shadow-2xl overflow-hidden flex flex-col transition-all duration-300 ease-in-out font-mono
+                    style={
+                        isMaximized
+                            ? undefined
+                            : {
+                                  bottom: "calc(1rem + env(safe-area-inset-bottom))",
+                                  right: "1rem",
+                              }
+                    }
+                    className={`fixed z-50 bg-[#1e1e1e]/95 backdrop-blur-md border border-white/10 shadow-2xl overflow-hidden flex flex-col transition-all duration-300 ease-in-out font-mono motion-reduce:transition-none
           ${isMaximized
-                            ? "inset-4 rounded-lg"
-                            : "bottom-4 right-4 w-[90vw] max-w-[400px] h-[400px] rounded-lg"
+                            ? "top-20 right-4 bottom-4 left-4 rounded-lg"
+                            : "w-[calc(100vw-2rem)] max-w-[400px] h-[400px] max-h-[calc(100dvh-6rem)] rounded-lg"
                         }`}
                 >
                     {/* Header */}
@@ -67,20 +82,30 @@ export default function FloatingTerminal() {
                         className="bg-[#2d2d2d] px-3 py-2 flex items-center justify-between cursor-pointer border-b border-white/10"
                         onDoubleClick={toggleMaximize}
                     >
-                        <div className="flex items-center gap-2">
-                            <div className="flex gap-1.5">
+                        <div className="flex items-center gap-2 min-w-0">
+                            <div className="flex gap-1.5 shrink-0">
                                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/80 hover:bg-red-500 cursor-pointer" onClick={toggleOpen} />
                                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 hover:bg-yellow-500 cursor-pointer" onClick={toggleOpen} />
                                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/80 hover:bg-green-500 cursor-pointer" onClick={toggleMaximize} />
                             </div>
-                            <span className="text-xs text-white/40 ml-2">luis@portfolio: {pathname === "/" ? "~" : pathname}</span>
+                            <span className="text-xs text-white/40 ml-2 truncate">luis@portfolio: {pathname === "/" ? "~" : pathname}</span>
                         </div>
 
-                        <div className="flex items-center gap-2 text-white/40">
-                            <button onClick={toggleMaximize} className="hover:text-white transition-colors" aria-label="Maximize">
+                        <div className="flex items-center gap-1 text-white/40 shrink-0">
+                            <button
+                                type="button"
+                                onClick={toggleMaximize}
+                                className="flex items-center justify-center h-8 w-8 hover:text-white transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
+                                aria-label={isMaximized ? "Restore terminal" : "Maximize terminal"}
+                            >
                                 {isMaximized ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
                             </button>
-                            <button onClick={toggleOpen} className="hover:text-white transition-colors" aria-label="Close">
+                            <button
+                                type="button"
+                                onClick={toggleOpen}
+                                className="flex items-center justify-center h-8 w-8 hover:text-white transition-colors rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
+                                aria-label="Close terminal"
+                            >
                                 <X size={14} />
                             </button>
                         </div>
@@ -96,11 +121,11 @@ export default function FloatingTerminal() {
                             <div key={i} className="mb-1 break-words">
                                 {entry.command !== "init" && (
                                     <div className="flex text-white/50">
-                                        <span className="mr-2 text-[#f8c946]">$</span>
-                                        <span>{entry.command}</span>
+                                        <span className="mr-2 shrink-0 text-[#f8c946]">$</span>
+                                        <span className="min-w-0 break-words">{entry.command}</span>
                                     </div>
                                 )}
-                                <div className="text-white/90 ml-4">{entry.output}</div>
+                                <div className="text-white/90 ml-4 min-w-0 break-words">{entry.output}</div>
                             </div>
                         ))}
 
@@ -112,8 +137,7 @@ export default function FloatingTerminal() {
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 onKeyDown={handleKeyDown}
-                                className="flex-1 bg-transparent border-none outline-none text-white/90 placeholder-white/20"
-                                autoFocus
+                                className="flex-1 bg-transparent border-none outline-none text-white/90 placeholder-white/20 text-base sm:text-sm"
                                 autoComplete="off"
                                 spellCheck={false}
                             />

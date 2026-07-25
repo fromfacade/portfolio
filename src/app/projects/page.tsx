@@ -33,13 +33,13 @@ export default function ProjectsPage() {
                                         </span>
                                     )}
                                 </div>
-                                <div className="flex gap-2 shrink-0">
+                                <div className="flex gap-1 shrink-0 -mr-2">
                                     {project.githubUrl && (
                                         <a
                                             href={project.githubUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-white/50 hover:text-white transition-colors rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
+                                            className="flex items-center justify-center h-11 w-11 text-white/50 hover:text-white transition-colors rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
                                             aria-label={`View ${project.title} source code on GitHub`}
                                         >
                                             <Github size={20} />
@@ -50,7 +50,7 @@ export default function ProjectsPage() {
                                             href={project.liveUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-white/50 hover:text-white transition-colors rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
+                                            className="flex items-center justify-center h-11 w-11 text-white/50 hover:text-white transition-colors rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
                                             aria-label={`View ${project.title} live demo`}
                                         >
                                             <Globe size={20} />
@@ -59,7 +59,7 @@ export default function ProjectsPage() {
                                 </div>
                             </div>
 
-                            <p className="text-white/70 text-sm line-clamp-3">
+                            <p className="text-white/70 text-sm leading-relaxed line-clamp-none md:line-clamp-3">
                                 {project.description}
                             </p>
 
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
 
                             <Link
                                 href={`/projects/${project.slug}`}
-                                className="mt-auto inline-flex items-center text-sm font-medium text-[#f8c946] hover:underline gap-1 pt-2 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
+                                className="mt-auto -mx-2 -mb-2 inline-flex items-center text-sm font-medium text-[#f8c946] hover:underline gap-1 px-2 py-3 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f8c946]"
                             >
                                 View Details <ArrowRight size={14} />
                             </Link>

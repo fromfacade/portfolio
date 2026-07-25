@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${jetbrains.variable} font-sans bg-[#121212] text-white min-h-screen flex flex-col antialiased`}>
+      <body className={`${inter.variable} ${jetbrains.variable} font-sans bg-[#121212] text-white min-h-dvh flex flex-col antialiased`}>
         <Navbar />
         <main className="flex-1 pt-20 pb-12">
           {children}
