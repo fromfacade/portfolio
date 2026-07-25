@@ -41,7 +41,7 @@ export default function AboutPage() {
         </div>
 
         {/* Polaroid Cluster */}
-        <div className="flex-1 w-full lg:w-auto flex justify-center lg:justify-end relative min-h-[300px] lg:min-h-[400px]">
+        <div className="flex-1 w-full lg:w-auto flex justify-center lg:justify-end relative lg:min-h-[400px]">
           <div className="relative w-full max-w-[400px] lg:max-w-[500px] flex flex-col items-center lg:block">
             {/* Photo 1: Hidden on small mobile? No, stack them. */}
             <PolaroidCard
@@ -89,7 +89,7 @@ export default function AboutPage() {
       >
         <div className="flex items-center gap-4 text-[#f8c946]">
           <Code2 size={24} />
-          <h2 className="text-2xl font-bold">The &quot;Why&quot;</h2>
+          <h2 className="text-2xl font-bold">Why?</h2>
         </div>
         <div className="prose prose-invert max-w-none text-white/70 text-lg leading-relaxed space-y-4">
           <p>

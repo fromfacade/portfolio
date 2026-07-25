@@ -72,19 +72,19 @@ export function useTerminal(initialWelcomeMessage?: React.ReactNode) {
         switch (cleanCmd) {
             case "help":
                 output = (
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs sm:text-sm text-white/80">
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs sm:text-sm text-white/80 min-w-0">
                         <div className="col-span-2 text-[#f8c946] mb-1"> Commands:</div>
-                        <div><span className="text-cyan-400">home</span> / <span className="text-cyan-400">about</span></div>
-                        <div><span className="text-cyan-400">projects</span></div>
-                        <div><span className="text-cyan-400">experience</span></div>
-                        <div><span className="text-cyan-400">contact</span></div>
-                        <div><span className="text-cyan-400">resume</span></div>
-                        <div><span className="text-cyan-400">github</span> / <span className="text-cyan-400">linkedin</span></div>
-                        <div><span className="text-cyan-400">email</span></div>
-                        <div><span className="text-cyan-400">clear</span></div>
+                        <div className="min-w-0 break-words"><span className="text-cyan-400">home</span> / <span className="text-cyan-400">about</span></div>
+                        <div className="min-w-0 break-words"><span className="text-cyan-400">projects</span></div>
+                        <div className="min-w-0 break-words"><span className="text-cyan-400">experience</span></div>
+                        <div className="min-w-0 break-words"><span className="text-cyan-400">contact</span></div>
+                        <div className="min-w-0 break-words"><span className="text-cyan-400">resume</span></div>
+                        <div className="min-w-0 break-words"><span className="text-cyan-400">github</span> / <span className="text-cyan-400">linkedin</span></div>
+                        <div className="min-w-0 break-words"><span className="text-cyan-400">email</span></div>
+                        <div className="min-w-0 break-words"><span className="text-cyan-400">clear</span></div>
                         <div className="col-span-2 mt-2 text-[#f8c946]">Project Shortcuts:</div>
                         {projects.map((p) => (
-                            <div key={p.slug} className="col-span-2 sm:col-span-1">
+                            <div key={p.slug} className="col-span-2 sm:col-span-1 min-w-0 break-words">
                                 <span className="text-green-400">{p.slug}</span>
                             </div>
                         ))}
