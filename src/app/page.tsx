@@ -15,9 +15,14 @@ export default function Home() {
     const bootSeen = sessionStorage.getItem("bootSeen");
     if (!bootSeen) {
       router.replace("/boot");
-    } else {
-      setIsReady(true);
+      return;
     }
+
+    const frame = requestAnimationFrame(() => {
+      setIsReady(true);
+    });
+
+    return () => cancelAnimationFrame(frame);
   }, [router]);
 
   if (!isReady) {
