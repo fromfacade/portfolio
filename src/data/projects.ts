@@ -235,6 +235,7 @@ export const projects: Project[] = [
       "Built a robust backend with PostgreSQL to store user preferences and search history.",
     ],
     githubUrl: "https://github.com/fromfacade/Spritz-Cologne-Dupe",
+    status: "Hackathon Project",
 
     shortTagline:
       "AI-assisted fragrance discovery for finding affordable alternatives to luxury scents.",
