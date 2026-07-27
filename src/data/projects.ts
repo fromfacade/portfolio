@@ -1,6 +1,7 @@
-export type ProjectStatus = "Completed" | "In Progress";
+export type ProjectStatus = "Completed" | "In Progress" | "Hackathon Project";
 
 export type ProjectDemoType =
+  | "glucorelay"
   | "pc-builder"
   | "spritz"
   | "productivity"
@@ -51,9 +52,108 @@ export interface Project {
   /** Path under /public, e.g. "/projects/spritz/dashboard.png". Only set once a real screenshot exists. */
   image?: string;
   gallery?: string[];
+  /** Optional safety or scope disclaimer shown near the project overview. */
+  disclaimer?: string;
 }
 
 export const projects: Project[] = [
+  {
+    title: "GlucoRelay",
+    slug: "glucorelay",
+    description:
+      "GlucoRelay interprets spoken diabetes safety check-ins, tracks whether the patient is okay, treating a low, or needs help, and coordinates caregiver escalation when assistance or a follow-up is required.",
+    techStack: [
+      "Python",
+      "FastAPI",
+      "Gemma 4",
+      "Google GenAI SDK",
+      "Pydantic",
+      "REST API",
+      "Pytest",
+      "JavaScript",
+      "HTML/CSS",
+    ],
+    highlights: [
+      "Designed a state-driven emergency workflow supporting okay, treating, follow-up, help-needed, and unknown responses.",
+      "Integrated Gemma 4 structured output while keeping final application decisions behind deterministic validation rules.",
+      "Built idempotent FastAPI endpoints for patient responses, timeouts, caregiver acknowledgement, event resolution, location updates, and resets.",
+      "Added fallback language parsing and safety rescans for cases where the model response was missing, malformed, or overly cautious.",
+      "Created automated regression tests covering semantic validation, escalation rules, caregiver handoffs, state transitions, and bilingual responses.",
+    ],
+    githubUrl: "https://github.com/fromfacade/glucorelay",
+    featured: true,
+    status: "Hackathon Project",
+
+    shortTagline:
+      "An AI-assisted emergency coordination system for people with Type 1 diabetes.",
+    overview:
+      "GlucoRelay is an AI-assisted emergency coordination prototype created during the CruzHacks Gemma 4 Hackathon. It allows someone with Type 1 diabetes to provide a natural-language voice check-in and converts that response into a structured safety state. The system can record that the patient is okay, recognize that they are actively treating a low, schedule another check-in, or escalate the event to a caregiver when help is needed.",
+    problem:
+      "During a diabetic low, a person may be confused, physically impaired, or unable to communicate using a rigid interface. A simple alert also may not tell a caregiver whether the person is treating the low, needs immediate assistance, or has stopped responding.",
+    solution:
+      "GlucoRelay accepts conversational check-ins and uses Gemma 4 to extract structured information from them. Deterministic validation and state-transition rules then decide whether to record treatment, schedule a follow-up, mark the person as okay, or initiate a caregiver handoff. A public caregiver view presents the event timeline, patient status, location information, and acknowledgement controls.",
+    role: "Co-developed the project with a teammate, focusing primarily on the FastAPI backend, Gemma-powered voice interpretation, safety validation, event state transitions, caregiver escalation workflow, API endpoints, and automated tests.",
+    features: [
+      {
+        title: "Natural-Language Check-Ins",
+        description:
+          'Interprets conversational responses such as "I already drank some juice" or "I feel confused and need help."',
+      },
+      {
+        title: "Structured AI Interpretation",
+        description:
+          "Uses Gemma 4 structured output to classify the response and extract relevant details without allowing the model to directly control the application.",
+      },
+      {
+        title: "Deterministic Safety Validation",
+        description:
+          "Validates proposed actions, rejects unsafe or invalid transitions, and uses fallback parsing when the model response cannot be used.",
+      },
+      {
+        title: "Caregiver Escalation",
+        description:
+          "Creates a caregiver handoff when the patient requests help or does not respond to a scheduled follow-up.",
+      },
+      {
+        title: "Event Timeline",
+        description:
+          "Records patient responses, treatment updates, acknowledgements, location changes, escalation attempts, and resolution events.",
+      },
+      {
+        title: "Bilingual Processing",
+        description:
+          "Supports English and Spanish check-ins while maintaining an English summary for caregiver coordination.",
+      },
+    ],
+    challenges: [
+      "Balancing flexible natural-language interpretation with predictable safety behavior.",
+      "Preventing malformed or unexpected model output from creating an invalid state transition.",
+      "Handling ambiguous statements that contain both reassuring and concerning language.",
+      "Designing asynchronous follow-up and caregiver escalation behavior that remains idempotent.",
+    ],
+    lessons: [
+      "AI output should be treated as a proposal rather than trusted as the final application decision.",
+      "Safety-sensitive systems benefit from combining model interpretation with explicit validation and deterministic state transitions.",
+      "Event timelines and idempotent actions make multi-party emergency workflows easier to understand and recover.",
+      "Regression tests built from real conversational examples are valuable for detecting subtle language-classification failures.",
+    ],
+    demoType: "glucorelay",
+    demoTitle: "Safety Check-In Simulation",
+    architecture: {
+      current: [
+        "Voice / Text Check-In",
+        "FastAPI",
+        "Gemma 4 Interpretation",
+        "Safety Validation",
+        "State Machine",
+        "Timeline + Follow-Up",
+        "Caregiver Handoff",
+        "Caregiver Status Page",
+      ],
+    },
+    disclaimer:
+      "GlucoRelay is a hackathon prototype and is not a medical device or substitute for professional emergency services.",
+  },
   {
     title: "PC Build Web App",
     slug: "pc-build-web-app",

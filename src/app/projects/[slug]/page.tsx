@@ -100,6 +100,11 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                             <p className="text-sm text-white/70">{project.role}</p>
                         </div>
                     )}
+                    {project.disclaimer && (
+                        <p className="text-xs text-white/40 leading-relaxed max-w-3xl border-l-2 border-white/10 pl-3">
+                            {project.disclaimer}
+                        </p>
+                    )}
                 </ProjectSection>
             )}
 

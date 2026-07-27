@@ -1,11 +1,13 @@
 import type { ComponentType } from "react";
 import type { Project, ProjectDemoType } from "@/data/projects";
+import GlucoRelayDemo from "./demos/GlucoRelayDemo";
 import PcBuilderDemo from "./demos/PcBuilderDemo";
 import SpritzDemo from "./demos/SpritzDemo";
 import ProductivityDemo from "./demos/ProductivityDemo";
 import TaskFlowDemo from "./demos/TaskFlowDemo";
 
 const DEMO_COMPONENTS: Record<ProjectDemoType, ComponentType> = {
+  glucorelay: GlucoRelayDemo,
   "pc-builder": PcBuilderDemo,
   spritz: SpritzDemo,
   productivity: ProductivityDemo,
